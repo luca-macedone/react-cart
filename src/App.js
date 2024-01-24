@@ -4,6 +4,7 @@ import AppContext from "./AppContext";
 import AppReducer from "./AppReducer";
 import Header from "./Components/Header";
 import CartTable from "./Components/CartTable";
+import CheckoutSection from "./Components/CheckoutSection";
 
 const list = [
   {
@@ -63,6 +64,7 @@ function App() {
       <AppContext.Provider value={{ state, dispatch }}>
         <Header />
         <CartTable />
+        <CheckoutSection />
       </AppContext.Provider>
     </div>
   );

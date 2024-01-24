@@ -22,9 +22,16 @@ const CartTable = () => {
     }
   };
 
-  const decrementQuantity = (_id) => {
+  const decrementQuantity = (_item) => {
     try {
-      dispatch({ type: "DECREMENT_ITEM_QUANTITY", payload: { id: _id } });
+      if (_item.amount - 1 > 0) {
+        dispatch({
+          type: "DECREMENT_ITEM_QUANTITY",
+          payload: { id: _item.id },
+        });
+      } else {
+        dispatch({ type: "DELETE_ITEM", payload: { id: _item.id } });
+      }
     } catch (e) {
       console.error(e);
     }
@@ -78,7 +85,7 @@ const CartTable = () => {
                   <button
                     type="button"
                     className="btn py-1 px-2"
-                    onClick={() => decrementQuantity(item.id)}
+                    onClick={() => decrementQuantity(item)}
                   >
                     <FontAwesomeIcon
                       className="text-danger"

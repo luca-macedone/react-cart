@@ -8,7 +8,11 @@ const Header = () => {
 
   const fetchQuantity = () => {
     // console.log(state);
-    return state.data.length;
+    if (state.data !== undefined) {
+      return state.data.length;
+    } else {
+      return 0;
+    }
   };
 
   return (
