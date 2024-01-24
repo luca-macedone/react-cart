@@ -63,8 +63,19 @@ function App() {
     <div className="App">
       <AppContext.Provider value={{ state, dispatch }}>
         <Header />
-        <CartTable />
-        <CheckoutSection />
+        {state.data.length > 0 && (
+          <>
+            <CartTable />
+            <CheckoutSection />
+          </>
+        )}
+        {state.data.length === 0 && (
+          <>
+            <h2 className="fw-bold text-capitalize text-center py-5 my-5">
+              Nessun prodotto nel carrello
+            </h2>
+          </>
+        )}
       </AppContext.Provider>
     </div>
   );
